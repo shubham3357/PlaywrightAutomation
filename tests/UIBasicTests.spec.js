@@ -25,8 +25,27 @@ test('Second Testcase', async ({ page }) => {
 
 
 test.only('Login Testcase', async ({ page }) => {
+
+    //Locators
+    const usernameLocator = page.locator('#username');
+    const passwordLocator = page.locator('[type="password"]');
+    const signInBtnLocator = page.locator('#signInBtn');
+
+    //Navigation
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
-    await page.locator('#username').fill('username');
-    await page.locator('[type="password"]').fill('password');
-    await page.locator('#signInBtn').click();
-});                 
+    await usernameLocator.fill('username');
+    await passwordLocator.fill('password');
+    await signInBtnLocator.click();
+    
+    //Assertions
+    await expect(page.locator('.alert-danger')).toContainText('Incorrect');
+
+    await usernameLocator.fill('');
+    await usernameLocator.fill('rahulshettyacademy');
+    await passwordLocator.fill('learning');
+    await signInBtnLocator.click();
+
+    const firstProductName = await page.locator('.card-title a').nth(0).textContent();
+    expect(firstProductName).toBe('iphone X');
+
+});

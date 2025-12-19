@@ -30,13 +30,14 @@ test.only('Login Testcase', async ({ page }) => {
     const usernameLocator = page.locator('#username');
     const passwordLocator = page.locator('[type="password"]');
     const signInBtnLocator = page.locator('#signInBtn');
+    const productTitleCardLocator = page.locator('.card-title a');  
 
     //Navigation
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     await usernameLocator.fill('username');
     await passwordLocator.fill('password');
     await signInBtnLocator.click();
-    
+
     //Assertions
     await expect(page.locator('.alert-danger')).toContainText('Incorrect');
 
@@ -45,7 +46,14 @@ test.only('Login Testcase', async ({ page }) => {
     await passwordLocator.fill('learning');
     await signInBtnLocator.click();
 
-    const firstProductName = await page.locator('.card-title a').nth(0).textContent();
-    expect(firstProductName).toBe('iphone X');
+    //const firstProductName = await productTitleCardLocator.nth(0).textContent();
+    //expect(firstProductName).toBe('iphone X');
+
+    /*
+    Note: below will not work, because playwright does not wait for allTextContents() to be loaded
+    expect(await productTitleCardLocator.allTextContents()).toContain('iphone X');
+    */
+
+    expect(await productTitleCardLocator.allTextContents()).toContain('iphone X');
 
 });

@@ -11,7 +11,7 @@ const config = {
 
   //maximum time an expect assertion can run before it is considered failed
   expect: {
-    timeout: 60 * 1000,
+    timeout: 5 * 1000,
   },
 
   //reporter is used to generate a report of the test results

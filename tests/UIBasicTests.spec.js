@@ -86,7 +86,7 @@ test('UI Element controller test', async ({ page }) => {
 
 });
 
-test.only('UI Child window handler', async ({ browser }) => {
+test('UI Child window handler', async ({ browser }) => {
     const context = await browser.newContext();
     const page = await context.newPage();
     const usernameLocator = page.locator('#username');

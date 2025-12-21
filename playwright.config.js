@@ -19,7 +19,11 @@ const config = {
 
   use: {
     browserName: 'chromium',
-    headless: false
+    headless: false,
+    //screenshot for every step
+    screenshot: 'on',
+    //detail trace logs only for failed  cases
+    trace: 'retain-on-failure'
   }
 };
 

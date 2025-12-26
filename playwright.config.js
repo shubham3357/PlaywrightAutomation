@@ -7,7 +7,7 @@ const config = {
   testDir: './tests',
 
   //maximum time a test can run before it is considered failed
-  timeout: 60 * 1000,
+  timeout: 15 * 1000,
 
   //maximum time an expect assertion can run before it is considered failed
   expect: {
